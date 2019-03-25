@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WEB-P_2</title>
+	<link rel="stylesheet" >
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="scr 1.js"></script>
+	<script src="scr 2.js"></script>
+<script>
+function getAge(){
+    var year = $('#year1').val();
+    $.ajax({
+        type: "POST",
+        url: "p4.php",
+        data: {year2:year}
+    }).done(function( result )
+        {
+            $("#info").html(result);
+        });
+}
+</script>
+</head>
+<body>
+	<form action="p2.php" method="get">
+		<h1>Ваш отзыв о наших услугах</h1>
+		<div class="tableLogPass">
+			<div class="row">
+				<div class="cell loginCell">
+					<label>
+						Ваше имя: <br>
+						<input type="text" name="name"  placeholder="Аноним">
+
+					</label>
+				</div>
+				<div class="cell passCell">
+					<label>
+						Ваш возраст: <br>
+						<select name="age" placeholder="менее 20">
+  							<option value="ot-do">Выбрать</option>
+  							<option value="age">от 0 до 10</option>
+  							<option value="age">от 11 до 20</option>
+  							<option value="age">от 21 до 30</option>
+							<option value="age">от 31 до 40</option>
+							<option value="age">от 41 до 50</option>
+							<option value="age">от 51 до 60</option>
+							<option value="age">от 61 до 70</option>
+							<option value="age">от 71 до 100</option>
+						</select>
+					</label>
+					
+				</div>
+				<br>
+				<div class="sex">
+				<label>
+				     Ваш Пол:<br>
+			<form name="male_female" action "" method= "post" >
+				<input type="radio" name="sex" value= "Мужской" checked= "checked" /> Мужской	
+				<input type="radio" name="sex" value= "Женский" checked= "checked" /> Женский 
+			</form>
+			    </label>
+				</div>
+				<br>
+				Ваши интересы:<br>
+		<select name="WhatULike">		
+		<div class="table tableAdd">
+			<div class="row">
+				<div class="cell">
+					<input type="checkbox" name="computers">
+					Компьютеры
+				</div>
+				<div class="cell">
+					<input type="checkbox" name="sport">		
+					Спорт		
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell">
+					<input type="checkbox" name="isk">	
+					Искусство			
+				</div>
+				<div class="cell">
+					<input type="checkbox" name="nayka">		
+					Наука		
+				</div>
+			</div>
+		</div>
+		</select>
+	</div>
+        <form action="1 .php" method="POST">
+		<br> Ваше мнение:</br>
+		<textarea name= "comnents" cols= "24" rows= "4">
+		</textarea>
+		<br>
+		<input type="submit" value="Отправить">
+		<input type="reset" value="Очистить форму">
+		</br>
+        </form>		
+
+	<br>
+	<br>
+	   <form enctype="multipart/form-data" action="p2.php" method="post">
+		<input type="submit" value="Загрузить">
+		<input type="file" accept="image/png,image/jpg" name="img">
+	   </form>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<form action="p3.php" method="post">
+		<label>
+			E-mail <br>
+			<input type="email" name="email">
+		</label>
+		<br>
+		<label>
+			Тема: <br>
+			<input type="text" name="subject">
+		</label>
+		<br>
+		<label>
+			Сообщение: <br>
+			<input type="text" name="message">
+		</label>
+		<br><br>
+		<input type="submit" value="Отправить">
+	</form>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<input type="text" id="year1" placeholder="Введите год рождения">
+	<input type="button" id="done" value="Узнать возраст" onClick="getAge()">
+	<div id="info"></div>
+</body>
+</html>
